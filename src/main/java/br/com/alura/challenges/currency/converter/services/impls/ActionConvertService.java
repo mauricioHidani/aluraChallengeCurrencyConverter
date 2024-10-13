@@ -79,7 +79,7 @@ public class ActionConvertService implements IActionConvertService {
 		if (!currency.matches("^[a-zA-Z]+$")) {
 			throw new IllegalArgumentException("A moeda não é reconhecida.");
 		}
-		return currency;
+		return currency.toUpperCase();
 	}
 
 	private BigDecimal inCurrencyValue(final InteractionUtil itr) {
