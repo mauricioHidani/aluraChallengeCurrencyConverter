@@ -3,6 +3,8 @@
 📅Thursday, 10th October 2024 - 📍São Paulo, Brazil<br>
 🌎[@Alura](https://www.alura.com.br/) | [@One](https://www.oracle.com/br/)<br>
 
+![banner](https://github.com/user-attachments/assets/9a8694d4-639a-406f-896a-36098f1b504e)
+
 ## Versões
 - [Java 21](https://docs.oracle.com/en/java/javase/21/)
 - [Maven](https://maven.apache.org/what-is-maven.html)
@@ -14,21 +16,33 @@
 
 ### Requisitos
 - Converter moedas utilizando uma API externa
+- Histórico de conversões
 - Desenvolver um menu para nevegação no terminal
 - Tratar erros de entradas e resultados da aplicação
 
-**Tela inicial**<br>
-![image](https://github.com/user-attachments/assets/8d9c38a5-10fe-40b7-bb0d-98493c464b24)
+**Tela inicial**
 
-**Opção 1 - Converter Moeda**<br>
-_Convertendo USD para BRL_<br>
-![image](https://github.com/user-attachments/assets/e2defc65-c906-4611-873c-2583b39f5b14)
+![main screen](https://github.com/user-attachments/assets/4134ce4b-5cf9-4a9d-8604-bb4b5457e4a2)
 
-**Exemplo de erro de inserção - Tipo Moeda**<br>
-![image](https://github.com/user-attachments/assets/6403fb92-fb9c-449b-a325-df7002a8bd4c)
+**Opção 1 - Converter Moeda**
 
-**Exemplo de erro ao tentar encontrar moeda não existente**<br>
-![image](https://github.com/user-attachments/assets/36ee270c-af7b-4b73-ad29-4205469e692e)
+_Convertendo USD para BRL_
 
-**Exemplo de opção Sair**<br>
-![image](https://github.com/user-attachments/assets/5c69c1f0-8b13-48a7-a4d4-6ca0bb3beead)
+![converter brl to usd](https://github.com/user-attachments/assets/ca02781c-b83a-4fb5-8017-a32ff43d0207)
+
+**Exemplo de erro de inserção - Tipo Moeda**
+
+![insert currency error](https://github.com/user-attachments/assets/18e34962-20e3-4e4f-96c7-f571dba89e5e)
+
+**Exemplo de erro ao tentar encontrar moeda não existente**
+
+![currency not found](https://github.com/user-attachments/assets/40f24e09-b65a-4f5a-ba08-95151a6d619b)
+
+**Exemplo de listagem de histórico de conversões**
+
+![conversions history](https://github.com/user-attachments/assets/c2202579-1c79-43ad-b28d-96caa63d7601)
+
+**Exemplo de opção Sair**
+
+![exit](https://github.com/user-attachments/assets/07484f5f-188d-4c06-83d8-99d9f3df0562)
+
