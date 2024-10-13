@@ -1,18 +1,22 @@
 package br.com.alura.challenges.currency.converter.controllers;
 
-import br.com.alura.challenges.currency.converter.exceptions.NotFoundException;
+import br.com.alura.challenges.currency.converter.models.CurrencyHistory;
 import br.com.alura.challenges.currency.converter.models.app.BannerProps;
 import br.com.alura.challenges.currency.converter.models.app.enums.MenuState;
-import br.com.alura.challenges.currency.converter.services.impls.ActionConvertService;
+import br.com.alura.challenges.currency.converter.services.IActionConvertService;
+import br.com.alura.challenges.currency.converter.services.IActionHistory;
 import br.com.alura.challenges.currency.converter.services.ICurrencyService;
+import br.com.alura.challenges.currency.converter.services.impls.ActionConvertService;
+import br.com.alura.challenges.currency.converter.services.impls.ActionHistory;
 import br.com.alura.challenges.currency.converter.utils.BannerUtil;
-import br.com.alura.challenges.currency.converter.utils.CurrencyFormatUtil;
 import br.com.alura.challenges.currency.converter.utils.InteractionUtil;
-import br.com.alura.challenges.currency.converter.utils.LocalDateTimeParseUtil;
 
-import java.math.BigDecimal;
+import java.time.Clock;
+import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.Set;
 
 public class CurrencyController {
 
@@ -22,7 +26,10 @@ public class CurrencyController {
 	private final BannerUtil bannerUtil;
 	private final BannerProps bannerProps;
 
-	private final ActionConvertService convertService;
+	private final IActionConvertService convertService;
+	private final IActionHistory historyService;
+
+	private static Set<CurrencyHistory> history = new HashSet<>();
 
 	public CurrencyController(final Scanner scanner,
 							  final BannerUtil bannerUtil,
@@ -33,6 +40,17 @@ public class CurrencyController {
 		this.bannerProps = bannerProps;
 
 		this.convertService = new ActionConvertService(service, scanner, BREAK_LINE_LENGHT);
+		this.historyService = new ActionHistory(BREAK_LINE_LENGHT);
+	}
+
+	public static synchronized void addCurrencyOfHistory(CurrencyHistory currency) {
+		var now = LocalDateTime.now(Clock.systemDefaultZone());
+		currency.setRegisteredIn(now);
+		history.add(currency);
+	}
+
+	public static synchronized Set<CurrencyHistory> getCurrencyHistory() {
+		return history;
 	}
 
 	public void start() {
@@ -43,6 +61,7 @@ public class CurrencyController {
 		do {
 			state = choose();
 			convertService.init(state);
+			historyService.init(state);
 
 			itr.breakSection(':', BREAK_LINE_LENGHT);
 			itr.breakSection('*', BREAK_LINE_LENGHT);
@@ -55,7 +74,8 @@ public class CurrencyController {
 		return """
 				Menu Principal
 				  1- Converter moeda
-				  2- Sair""";
+				  2- Historico de conversões
+				  3- Sair""";
 	}
 
 	private MenuState choose() {
@@ -67,7 +87,8 @@ public class CurrencyController {
 			var option = scanner.nextInt();
 			switch (option) {
 				case 1 -> { return MenuState.CONVERT_CURRENCY; }
-				case 2 -> { return MenuState.LEAVING; }
+				case 2 -> { return MenuState.CONVERSIONS_HISTORY; }
+				case 3 -> { return MenuState.LEAVING; }
 				default -> throw new IllegalArgumentException("Essa opção não existente.");
 			}
 
