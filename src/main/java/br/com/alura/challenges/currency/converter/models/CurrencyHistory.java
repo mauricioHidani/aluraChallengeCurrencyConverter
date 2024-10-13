@@ -53,13 +53,13 @@ public class CurrencyHistory {
 		var currencyFmt = new CurrencyFormatUtil();
 		return """
 				Registrado em %s
-				Ultima atualização da cotação da moeda em %s
-				[Moeda %s | Conversão %s]"""
+				[Moeda %s | Conversão %s]
+				Ultima atualização da cotação [%s]"""
 				.formatted(
 					LocalDateTimeParseUtil.toComplete(registeredIn),
-					LocalDateTimeParseUtil.toComplete(timeLastUpdate),
 					currencyFmt.toFormat(value, currency),
-					currencyFmt.toFormat(target.value(), target.currency())
+					currencyFmt.toFormat(target.value(), target.currency()),
+					LocalDateTimeParseUtil.toComplete(timeLastUpdate)
 				);
 	}
 

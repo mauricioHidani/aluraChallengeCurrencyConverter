@@ -28,7 +28,7 @@ public class LocalDateTimeParseUtil {
 	}
 
 	public static String toComplete(final LocalDateTime dateTime) {
-		var fmt = DateTimeFormatter.ofPattern("EEEE, d MMMM yyyy");
+		var fmt = DateTimeFormatter.ofPattern("EE d/MM/yyyy hh:mm:ss");
 		return fmt.format(dateTime);
 	}
 
