@@ -1,5 +1,8 @@
 {
   "title": "Alura ONE G7 - Challenge Currency Converter",
   "since": "Friday, 11th October 2024 - São Paullo, Brazil",
-  "version": "0.0.1-SNAPSHOT"
+  "version": "0.0.1-SNAPSHOT",
+  "exchangeUri": "https://v6.exchangerate-api.com/v6/",
+  "exchangeKey": "MY_EXCHANGE_RATE_KEY",
+  "exchangeVersion": "latest"
 }
