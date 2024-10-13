@@ -9,6 +9,10 @@ public class ApplicationConfig {
 		return new PropertiesUtil();
 	}
 
+	public String propertiesName() {
+		return "application";
+	}
+
 	public BannerUtil bannerUtil() {
 		return new BannerUtil();
 	}
