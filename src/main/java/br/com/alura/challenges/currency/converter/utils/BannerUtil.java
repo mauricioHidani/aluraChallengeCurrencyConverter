@@ -1,6 +1,6 @@
 package br.com.alura.challenges.currency.converter.utils;
 
-import br.com.alura.challenges.currency.converter.models.app.Banner;
+import br.com.alura.challenges.currency.converter.models.app.BannerProps;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -11,7 +11,7 @@ public class BannerUtil {
 	private final String BANNER_ARCHIVE = "banner.txt";
 	private final String BANNER_STD = "Alura One Challenge - Currency Converter";
 
-	public String load(Banner bannerConfig) {
+	public String load(BannerProps bannerProps) {
 		var builder = new StringBuilder();
 
 		try {
@@ -33,12 +33,12 @@ public class BannerUtil {
 			builder.append(BANNER_STD);
 		}
 
-		if (bannerConfig != null) {
-			builder.append(bannerConfig.title());
+		if (bannerProps != null) {
+			builder.append(bannerProps.title());
 			builder.append('\s');
-			builder.append(bannerConfig.version());
+			builder.append(bannerProps.version());
 			builder.append('\n');
-			builder.append(bannerConfig.since());
+			builder.append(bannerProps.since());
 			builder.append('\n');
 		}
 		return builder.toString();
