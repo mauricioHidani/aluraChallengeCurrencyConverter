@@ -1,6 +1,9 @@
 package br.com.alura.challenges.currency.converter.services.impls;
 
+import br.com.alura.challenges.currency.converter.controllers.CurrencyController;
 import br.com.alura.challenges.currency.converter.exceptions.NotFoundException;
+import br.com.alura.challenges.currency.converter.models.CurrencyHistory;
+import br.com.alura.challenges.currency.converter.models.CurrencyTarget;
 import br.com.alura.challenges.currency.converter.models.app.enums.MenuState;
 import br.com.alura.challenges.currency.converter.services.IActionConvertService;
 import br.com.alura.challenges.currency.converter.services.ICurrencyService;
@@ -76,7 +79,7 @@ public class ActionConvertService implements IActionConvertService {
 		if (!currency.matches("^[a-zA-Z]+$")) {
 			throw new IllegalArgumentException("A moeda não é reconhecida.");
 		}
-		return currency;
+		return currency.toUpperCase();
 	}
 
 	private BigDecimal inCurrencyValue(final InteractionUtil itr) {
@@ -143,6 +146,15 @@ public class ActionConvertService implements IActionConvertService {
 						currencyFmt.toFormat(currencyValue, currency),
 						currencyFmt.toFormat(resultConverted, currencyTarget)
 				);
+
+				CurrencyController.addCurrencyOfHistory(
+					new CurrencyHistory(
+						currency, currencyValue,
+						new CurrencyTarget(currencyTarget, resultConverted),
+						founded.timeLastUpdate()
+					)
+				);
+
 			} catch (IllegalArgumentException | NotFoundException e) {
 				System.out.println("\r" + e.getMessage());
 			}
