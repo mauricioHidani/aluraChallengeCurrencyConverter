@@ -1,6 +1,6 @@
 # Desafio Conversor de Moeda | Currency Converter
 🚩Java e Orientação a Objetos G7 - ONE<br>
-📅Thursday, 10th October 2024 - 📍São Paulo, Brazil<br>
+📅10 de outubro de 2024 - 📍São Paulo, Brasil<br>
 🌎[@Alura](https://www.alura.com.br/) | [@One](https://www.oracle.com/br/)<br>
 
 ![banner](https://github.com/user-attachments/assets/9a8694d4-639a-406f-896a-36098f1b504e)
